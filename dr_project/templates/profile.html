@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">My Profile</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <!--                <button type="button" class="btn btn-sm">-->
+                    <!--                  <span data-feather="edit-3"></span>-->
+                    <!--                  &nbsp;Edit Profile-->
+                    <!--                </button>-->
+                </div>
+            </div>
+            <div class="row">
+                <div class="d-flex pt-3 my_profile-header">
+                    {% if profile.dp %}
+                        <img src="{{ profile.dp.url }}" alt="Profile Picture" class="my_profile-picture">
+                    {% else %}
+                        <img src="{% static 'images/default_dp.jpg' %}" alt="Profile Picture" class="my_profile-picture">
+                    {% endif %}
+                    <div class="my_profile-caption">
+                        <p class="pb-3 mb-0 small lh-sm">
+                            <strong class="d-block text-gray-dark my_profile-name" id="my_profile-name">{{ profile.name }}</strong>
+                        </p>
+                        <p class="pb-3 mb-0 small lh-sm my_profile-role">
+                            {{ profile.role }}
+                        </p>
+                    </div>
+                </div>
+                <div class="my_profile-body">
+                    <nav>
+                        <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                                    aria-selected="true">Basic Details
+                            </button>
+                            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
+                                    aria-selected="false">Accomplishments
+                            </button>
+                            <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
+                                    aria-selected="false">Contact Details
+                            </button>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                            <div class="table-responsive">
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <td>Display Name</td>
+                                        <td>{{ profile.name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Role</td>
+                                        <td>{{ profile.role }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Username</td>
+                                        <td>{{ profile.username }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date of Birth</td>
+                                        <td>{{ profile.dob }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                           <ul style="list-style-type:square">
+<!--                               <li><strong>High Patient Satisfaction:</strong> Consistently received positive feedback and high satisfaction ratings from patients for exceptional dental care and compassionate service.</li>-->
+<!--                               <li><strong>Complex Procedures:</strong> Successfully performed a wide range of complex dental procedures, including oral surgeries, dental implants, and advanced restorative work.</li>-->
+<!--                               <li><strong>Preventive Care:</strong> Developed and implemented effective preventive care programs that significantly reduced the incidence of dental diseases among patients.</li>-->
+                                <li>{{ profile.about }}</li>
+                           </ul>
+                        </div>
+                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            <div class="table-responsive">
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <td>Phone Number</td>
+                                        <td>{{ profile.phone_number }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td>{{ profile.email }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Address</td>
+                                        <td>{{ profile.area }}, {{ profile.city }}<br>{{ profile.district }}, {{ profile.state }}<br>{{ profile.country }}-{{ profile.pincode }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+{% endblock %}
+{% block extra_scripts %}
+<script src="{% static 'js/tab.js' %}"></script>
+{% endblock %}

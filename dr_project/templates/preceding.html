@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Previous Cases</h1>
+                <div class="mb-2 mb-md-0">
+                    <span class="size-18" data-feather="search"></span>
+                    &nbsp;<input type="text" id="search" class="search-space" placeholder="Your Text...">
+                </div>
+            </div>
+
+            <div class="content table-responsive">
+                <p class="display-5" id="noDataMessage" style="display: none; text-align: center; margin-top: 2rem;">No
+                    data found</p>
+                <table class="table table-borderless table-hover" id="appointmentTable">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">#Tocken No.</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Phone No.</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Place</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1,001</td>
+                        <td>Kiran</td>
+                        <td>9567385073</td>
+                        <td>krnvjy@live.com</td>
+                        <td>dec-12-24</td>
+                        <td>13-30</td>
+                        <td>Kunhimangalam</td>
+                        <td>
+                            <select class="status-select">
+                                <option value="linear-gradient(50deg, rgba(122,239,248,1) 0%, rgba(36,92,252,0.4738270308123249) 51%)">
+                                    Pending
+                                </option>
+                                <option value="linear-gradient(50deg, rgba(238,149,12,0.6923144257703081) 32%, rgba(249,3,3,0.3841911764705882) 96%)">
+                                    On Hold
+                                </option>
+                                <option value="linear-gradient(90deg, rgba(236,19,96,1) 30%, rgba(255,0,0,0.9976365546218487) 100%)">
+                                    Canceld
+                                </option>
+                                <option value="linear-gradient(50deg, rgba(148,249,3,1) 41%, rgba(12,238,61,1) 75%)">
+                                    Closed
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1,002</td>
+                        <td>nithya</td>
+                        <td>9567385073</td>
+                        <td>nithya@live.com</td>
+                        <td>dec-12-24</td>
+                        <td>20-30</td>
+                        <td>kannur</td>
+                        <td>
+                            <select class="status-select">
+                                <option value="linear-gradient(50deg, rgba(122,239,248,1) 0%, rgba(36,92,252,0.4738270308123249) 51%)">
+                                    Pending
+                                </option>
+                                <option value="linear-gradient(50deg, rgba(238,149,12,0.6923144257703081) 32%, rgba(249,3,3,0.3841911764705882) 96%)">
+                                    On Hold
+                                </option>
+                                <option value="linear-gradient(90deg, rgba(236,19,96,1) 30%, rgba(255,0,0,0.9976365546218487) 100%)">
+                                    Canceld
+                                </option>
+                                <option value="linear-gradient(50deg, rgba(148,249,3,1) 41%, rgba(12,238,61,1) 75%)">
+                                    Closed
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1,003</td>
+                        <td>Sanal</td>
+                        <td>9567385073</td>
+                        <td>sanu@live.com</td>
+                        <td>dec-18-24</td>
+                        <td>13-30</td>
+                        <td>Thekkumbad</td>
+                        <td>
+                            <select class="status-select">
+                                <option value="linear-gradient(50deg, rgba(122,239,248,1) 0%, rgba(36,92,252,0.4738270308123249) 51%)">
+                                    Pending
+                                </option>
+                                <option value="linear-gradient(50deg, rgba(238,149,12,0.6923144257703081) 32%, rgba(249,3,3,0.3841911764705882) 96%)">
+                                    On Hold
+                                </option>
+                                <option value="linear-gradient(90deg, rgba(236,19,96,1) 30%, rgba(255,0,0,0.9976365546218487) 100%)">
+                                    Canceld
+                                </option>
+                                <option value="linear-gradient(50deg, rgba(148,249,3,1) 41%, rgba(12,238,61,1) 75%)">
+                                    Closed
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1,004</td>
+                        <td>sunita</td>
+                        <td>9567385073</td>
+                        <td>suni@live.com</td>
+                        <td>dec-12-24</td>
+                        <td>13-30</td>
+                        <td>Kunhimangalam</td>
+                        <td>
+                            <select class="status-select">
+                                <option value="linear-gradient(50deg, rgba(122,239,248,1) 0%, rgba(36,92,252,0.4738270308123249) 51%)">
+                                    Pending
+                                </option>
+                                <option value="linear-gradient(50deg, rgba(238,149,12,0.6923144257703081) 32%, rgba(249,3,3,0.3841911764705882) 96%)">
+                                    On Hold
+                                </option>
+                                <option value="linear-gradient(90deg, rgba(236,19,96,1) 30%, rgba(255,0,0,0.9976365546218487) 100%)">
+                                    Canceld
+                                </option>
+                                <option value="linear-gradient(50deg, rgba(148,249,3,1) 41%, rgba(12,238,61,1) 75%)">
+                                    Closed
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+{% endblock %}
+{% block extra_scripts %}
+<script src="{% static 'js/tab.js' %}"></script>
+{% endblock %}

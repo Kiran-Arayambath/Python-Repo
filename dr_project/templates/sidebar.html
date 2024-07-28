@@ -1,0 +1,67 @@
+{% load static %}
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+    <div class="position-sticky pt-3">
+        <!-- Profile Section -->
+        <div class="profile-section text-center mb-4">
+            {% if profile.dp %}
+                <img src="{{ profile.dp.url }}" alt="Profile Picture" class="profile-picture">
+            {% else %}
+                <img src="{% static 'images/default_dp.png' %}" alt="Profile Picture" class="profile-picture">
+            {% endif %}
+            <div class="profile-caption">
+                <span class="profile-name">{{ profile.name }}</span>
+                <span class="profile-role">{{ profile.role }}</span>
+            </div>
+        </div>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link red" onclick="redirectToDashboard()">
+                    <span data-feather="home"></span>
+                    Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link blue" onclick="redirectToAppointments()">
+                    <span data-feather="file-text"></span>
+                    Appointments
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link green" onclick="redirectToInbox()">
+                    <span data-feather="message-square"></span>
+                    Messages
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link orange" onclick="">
+                    <span data-feather="bar-chart-2"></span>
+                    Reports
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link purple" onclick="">
+                    <span data-feather="layers"></span>
+                    Integrations
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link brown" onclick="redirectToProfile()">
+                    <span data-feather="user"></span>
+                    Profile
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link teal" onclick="redirectToTools()">
+                    <span data-feather="tool"></span>
+                    Tools
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link gray" href="../logout">
+                    <span data-feather="log-out"></span>
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

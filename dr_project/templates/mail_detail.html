@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+{% block body %}
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Inbox</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0"></div>
+                </div>
+                <div class="">
+                    <h5 class="">{{ mail.subject }}</h5>
+                    <h6 class="mb-2 text-muted">From: {{ mail.name }} ({{ mail.email }})</h6>
+                </div>
+                <div class="border-bottom right-icons">
+                    <i class="bi bi-inbox-fill h5" data-toggle="tooltip" data-placement="bottom" title="Inbox" onclick="redirectToInbox()"></i>
+                    <i class="bi bi-reply-fill h5" data-toggle="tooltip" data-placement="bottom" title="Reply" data-mail-id="{{ mail.id }}" onclick=""></i>
+                    <i class="bi bi-trash-fill h5" data-toggle="tooltip" data-placement="bottom" title="Delete" data-mail-id="{{ mail.id }}" onclick="deleteMail(this)"></i>
+                </div>
+                <div class="content-2 table-responsive">
+                    <div class="message-content">
+                        <p class="">{{ mail.message }}</p>
+                    </div>
+                </div>
+            </main>
+    <!-- Alert placeholder -->
+    <div id="liveAlertPlaceholder" class="custom-alert"></div>
+
+{% endblock %}
+{% block extra_scripts %}
+<script src="{% static 'js/tab.js' %}"></script>
+{% endblock %}

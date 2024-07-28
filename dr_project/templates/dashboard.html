@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+{% block body %}
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Dashboard</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="../preceding" class="custom-button">
+                        <div class="card bg-blue">
+                            <div class="card-title">Preceding Cases!</div>
+                            <p class="display-2">62</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="../appointments" class="custom-button">
+                        <div class="card bg-orange">
+                            <div class="card-title">Ongoing Cases!</div>
+                            <p class="display-2">50</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="../upcoming" class="custom-button">
+                        <div class="card bg-teal">
+                            <div class="card-title">Upcoming Cases!</div>
+                            <p class="display-2">58</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <h2 class="hgtblnc">Statistics</h2>
+                    <div class="dashtable-responsive">
+                        <canvas id="patientChart" width="1384" height="692"
+                                style="display: block; box-sizing: border-box; height: 346px; width: 692px;"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <h2 class="hgtblnc">Patient Visit</h2>
+                    <div class="dashtable-responsive">
+                        <canvas id="trafficSourcesChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+{% endblock %}
+{% block extra_scripts %}
+<script src="{% static 'js/dashboard.js' %}"></script>
+<script src="{% static 'js/tab.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+{% block body %}
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="#" class="custom-button">
+                        <div class="card bg-blue">
+                            <div class="card-title">Total Cases</div>
+                            <p class="display-5">63</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="#" class="custom-button">
+                        <div class="card bg-orange">
+                            <div class="card-title">Remaining Cases</div>
+                            <p class="display-5">10</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="#" class="custom-button">
+                        <div class="card bg-chilly">
+                            <div class="card-title">Canceld Cases</div>
+                            <p class="display-5">2</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="#" class="custom-button">
+                        <div class="card bg-teal">
+                            <div class="card-title">Finished Cases</div>
+                            <p class="display-5">51</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Appointments</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <button type="button" class="btn">
+                        <span data-feather="upload-cloud"></span>
+                        &nbsp;Update Details
+                    </button>
+                </div>
+            </div>
+            <div class="content table-responsive">
+                {% if appointments %}
+                <table class="table table-borderless table-hover">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Phone No.</th>
+                        <th scope="col">email</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Place</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for appointment in appointments %}
+                    <tr>
+                        <td>{{ appointment.name }}</td>
+                        <td>{{ appointment.phone_number }}</td>
+                        <td>{{ appointment.email }}</td>
+                        <td>{{ appointment.date }}</td>
+                        <td>{{ appointment.time }}</td>
+                        <td>{{ appointment.city }}</td>
+                        <td>
+                            <select class="status-select">
+                                <option value="linear-gradient(50deg, rgba(122,239,248,1) 0%, rgba(36,92,252,0.4738270308123249) 51%)">
+                                    Pending
+                                </option>
+                                <option value="linear-gradient(50deg, rgba(238,149,12,0.6923144257703081) 32%, rgba(249,3,3,0.3841911764705882) 96%)">
+                                    On Hold
+                                </option>
+                                <option value="linear-gradient(90deg, rgba(236,19,96,1) 30%, rgba(255,0,0,0.9976365546218487) 100%)">
+                                    Canceld
+                                </option>
+                                <option value="linear-gradient(50deg, rgba(148,249,3,1) 41%, rgba(12,238,61,1) 75%)">
+                                    Closed
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if appointments.has_previous %}
+                            <a href="?page=1">&laquo; first</a>
+                            <a href="?page={{ appointments.previous_page_number }}">previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ appointments.number }} of {{ appointments.paginator.num_pages }}.
+                        </span>
+
+                        {% if appointments.has_next %}
+                            <a href="?page={{ appointments.next_page_number }}">next</a>
+                            <a href="?page={{ appointments.paginator.num_pages }}">last &raquo;</a>
+                        {% endif %}
+                    </span>
+                </div>
+
+                {% else %}
+                <div class="alert" role="alert">
+                    <p class="display-5" style="text-align: center; margin-top: 2rem;">No Appointments</p>
+                </div>
+                {% endif %}
+            </div>
+        </main>
+
+{% endblock %}
+{% block extra_scripts %}
+<script src="{% static 'js/tab.js' %}"></script>
+{% endblock %}

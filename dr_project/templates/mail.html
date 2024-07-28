@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Inbox</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0"></div>
+                </div>
+                <div class="content-2 table-responsive">
+                    {% if emails %}
+                    <table class="table table-borderless table-hover">
+                        <thead class="thead-light" id="table-header">
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Subject</th>
+                            <th>Date & Time</th>
+                        </tr>
+                        </thead>
+                        {% for mail in emails %}
+                        <tbody id="inbox-body">
+                        <tr data-href="{% url 'mail_detail' mail.id %}">
+                            <td class="name-column">{{ mail.name }}</td>
+                            <td class="email-column">{{ mail.email }}</td>
+                            <td class="subject-column">{{ mail.subject }}</td>
+                            <td class="created-column">{{ mail.created_at }}</td>
+                        </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+
+                    <div class="pagination">
+                        <span class="step-links">
+                            {% if emails.has_previous %}
+                                <a href="?page=1">&laquo; first</a>
+                                <a href="?page={{ emails.previous_page_number }}">previous</a>
+                            {% endif %}
+
+                            <span class="current">
+                                Page {{ emails.number }} of {{ emails.paginator.num_pages }}.
+                            </span>
+
+                            {% if emails.has_next %}
+                                <a href="?page={{ emails.next_page_number }}">next</a>
+                                <a href="?page={{ emails.paginator.num_pages }}">last &raquo;</a>
+                            {% endif %}
+                        </span>
+                    </div>
+
+                    {% else %}
+                    <div class="alert" role="alert">
+                        <p class="display-5" style="text-align: center; margin-top: 2rem;">Inbox is empty</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </main>
+
+{% endblock %}
+{% block extra_scripts %}
+<script src="{% static 'js/tab.js' %}"></script>
+{% endblock %}

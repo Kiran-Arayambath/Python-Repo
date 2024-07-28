@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Update Reels</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+        </div>
+    </div>
+    <div class="row">
+        {% for reel in reels %}
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="reel-card">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <video class="embed-responsive-item" controls>
+                        <source src="{{ reel.reel_file.url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <!-- Edit icon -->
+                <a href="#" class="btn btn-lg btn-block edit-reel" data-toggle="modal" data-target="#editReelModal" data-id="{{ reel.id }}" data-title="{{ reel.title }}" data-url="{{ reel.reel_file.url }}">
+                    <i class="fas fa-edit  fa-2x"></i>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+<!-- Edit Reel Modal -->
+    <div class="modal fade" id="editReelModal" tabindex="-1" role="dialog" aria-labelledby="editReelModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modalbg">
+                <form method="post" enctype="multipart/form-data" id="editReelForm">
+                    {% csrf_token %}
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editReelModalLabel">Edit Reel</h5>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="reel_id" id="reelId">
+                        <div class="form-group">
+                            <label for="reelTitle">Title</label>
+                            <input type="text" class="form-control" name="title" id="reelTitle">
+                        </div>
+                        <div class="form-group">
+                            <label for="reelFile">Video File</label>
+                            <input type="file" class="form-control" name="reel_file" id="reelFile">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</main>
+
+{% endblock %}
+{% block extra_scripts %}
+<script src="{% static 'js/tab.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,82 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords"
+          content="Dental, Dentistry, Dental Care, Dentist, Dr. Amrutha Kunhikannan, Root Canal, Teeth Whitening">
+    <meta name="description"
+          content="Dr. Amrutha Kunhikannan provides expert dental care with a strong educational foundation and certified training in Basic and Advanced Rotary Endodontics and Esthetic Dentistry.">
+    <meta name="author" content="Kiran A">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/180x180.png' %}"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/32x32.png' %}"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/16x16.png' %}"/>
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/login.css' %}" rel="stylesheet">
+
+    <title>Dr. Amrutha Kunhikannan</title>
+    <script type="text/javascript">
+        var WebFontConfig = WebFontConfig || {};
+        WebFontConfig['active'] = function() {
+          if (typeof (window.jQuery) !== 'undefined') {
+            jQuery(window).trigger('liquid_async_fonts_active');
+          }
+        };
+        WebFontConfig['inactive'] = function() {
+          if (typeof (window.jQuery) !== 'undefined') {
+            jQuery(window).trigger('liquid_async_fonts_inactive');
+          }
+        };
+    </script>
+</head>
+<body>
+
+<!-- Login Start -->
+<div class="container pt-5">
+    <div class="login">
+		<div class="avatar">
+            <img src="{% static 'images/180x180.png' %}">
+		</div>
+        <h1>Admin Login</h1>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="" required="required"/>
+            <input type="password" name="password" placeholder="" required="required"/>
+            <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
+        </form>
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+</div>
+<!-- Hero End -->
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+</body>
+</html>
